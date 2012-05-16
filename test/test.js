@@ -1,15 +1,20 @@
 var assert = require('assert');
 
-require('../src/array.js');
+var app = require('../app.js');
 
-describe('Array#prototype', function() {
-    it('should return the first element of my array', function() {
-        assert.equal([1,2,3,4,5].first(), 1);
+describe('App', function() {
+    it('should return our name', function() {
+        assert.equal(app('What is your name?'), 'MiraGreg');
     });
-    it('should return the last element of my array', function() {
-        assert.equal([1,2,3,4,5].last(), 5);
+    it('should return our name for another question', function() {
+        assert.equal(app('my name is hob. what is my name'), 'MiraGreg');
     });
-    it('should return the middle element of my array', function() {
-        assert.equal([1,2,3,4,5].middle(), 3);
+    it('should return adition result', function() {
+        assert.equal(app('what is 9 plus 0'), '9');
+    });
+    it('should return another adition result', function() {
+        assert.equal(app('what is 9 plus 10'), '19');
     });
 });
+
+

@@ -2,7 +2,16 @@ var express = require('express');
 
 /* Reimplement this function to answer questions. */
 var answer = function(question, req, res) {
-    return "MiraGreg";
+
+    if(question.indexOf('name') != -1) {
+        return "MiraGreg";
+    }
+
+    if(question.indexOf('plus') != -1) {
+        var split = /([0-9])+ plus ([0-9])+/ 
+        var nb = split.exec(question);
+        return nb[0] + nb[1];
+    }
 };
 
 var app = express.createServer();
@@ -22,3 +31,4 @@ app.get("/", function(req, res) {
 app.listen(3000, "0.0.0.0");
 console.log("Server running on http://0.0.0.0:3000/");
 
+module.exports = answer;
